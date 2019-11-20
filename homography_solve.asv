@@ -1,0 +1,21 @@
+function v = homography_solve(in, out)
+
+n = size(in, 2);
+if n < 4
+    error('Need at least 4 matching points');
+end
+
+% Solve equations using SVD
+x = out(1, :); y = out(2,:); X = in(1,:); Y = in(2,:);
+rows0 = zeros(3, n);
+rowsXY = -[X; Y; ones(1,n)];
+hx = [rowsXY; rows0; x.*X; x.*Y; x];
+hy = [rows0; rowsXY; y.*X; y.*Y; y];
+h = [hx hy];
+if n == 4
+    [U, ~, ~] = svd(h);
+else
+    [U, ~, ~] = svd(h, 'econ');
+end
+v = (reshape(U(:,9), 3, 3)).';
+end
