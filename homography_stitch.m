@@ -12,8 +12,8 @@ end
 
 x_max = size(B,2); 
 y_max = size(B,1);
-
-xm = size(A,2); 
+% 
+% xm = size(A,2); 
 
 
 for i=1:x_max

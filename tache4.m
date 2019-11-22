@@ -13,8 +13,8 @@ B = readimage(buildingScene, 2);
 A = double(A);
 B = double(B);
 
-% subplot(121), imshow(uint8(A));
-% subplot(122), imshow(uint8(B));
+subplot(121), imshow(uint8(A));
+subplot(122), imshow(uint8(B));
 
 
 % figure,imshow(uint8(A));
@@ -66,7 +66,6 @@ for i=1:size(A,1)
     end
 end
 
-image = zeros(1,1,3);
 
 % B dans resultat selon M
 for i=1:x_max
@@ -75,7 +74,7 @@ for i=1:x_max
         p(1) = M(i,j,1) ;    
         p(2) = M(i,j,2) ; 
         
-        image(p(2)+ym+1,p(1)+xm+1,:) = B(j,i,:);
+        resultat(p(2)+ym+1,p(1)+xm+1,:) = B(j,i,:);
         
     end
 end
