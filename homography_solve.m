@@ -1,4 +1,4 @@
-function H = homography_solve(in, out)
+function [A,B,H] = homography_solve(in, out)
 
 n = size(in, 2);
 
@@ -6,22 +6,28 @@ if n < 4
     error('Need at least 4 matching points');
 end
 
-x = out(1, :); %sortie
-y = out(2,:);
-X = in(1,:); %entree
-Y = in(2,:);
+x = in(1,:); %entree
+y = in(2,:);
+X = out(1,:); %sortie
+Y = out(2,:);
 
-rows0 = zeros(3, n);
-rowsXY = -[X; Y; ones(1,n)];
+rows0 = zeros(3, n)';
+Mxy = [x; y; ones(1,n)]';
+rowsxX = -[x.*X]';
+rowsxY = -[x.*Y]';
+rowsyX = -[y.*X]';
+rowsyY = -[y.*Y]';
 
-Ax = [rowsXY; rows0; x.*X; x.*Y; x];
-Ay = [rows0; rowsXY; y.*X; y.*Y; y];
 
-A = [Ax Ay];
-if n == 4
-    [U, ~, ~] = svd(A);
-else
-    [U, ~, ~] = svd(A, 'econ');
-end
-H = (reshape(U(:,9), 3, 3)).';
+Ax = [Mxy rows0 rowsxX rowsyX];
+Ay = [rows0 Mxy rowsxY rowsyY];
+
+A = [Ax;Ay];
+
+B = [X Y]';
+
+H = inv(A'*A)*A'*B;
+H1 = [H' 1]';
+
+H = (reshape(H1 , 3, 3)).';
 end
