@@ -5,7 +5,7 @@
 clear all;clc; close all;
 
 bg = imread('images/panneau.jpg');
-fg = imread('images/car.jpg');
+fg = imread('images/boud.jpg');
 
 bg = projection(bg,fg);
 

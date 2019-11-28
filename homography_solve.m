@@ -1,4 +1,4 @@
-function [A,B,H] = homography_solve(in, out)
+function H = homography_solve(in, out)
 
 n = size(in, 2);
 
