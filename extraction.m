@@ -1,4 +1,4 @@
-function result = extraction(image,taille,nom)
+function result = extraction(image,taille)
 
 %   Extrait une partie de image et le met dans un fichier nom.jpg
 %   l'image d'ou en extrait 
@@ -60,6 +60,6 @@ for i=1:x_r
     end
 end
 
-imwrite(uint8(result),nom)
+
 
 end

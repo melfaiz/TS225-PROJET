@@ -15,7 +15,7 @@ bg = double(bg);
 fg =  double(fg);
 
 OUT = getPoints(bg);
-IN = [1 1;size(fg,2) size(fg,1);1 size(fg,1);1 1];
+IN = [1 1;size(fg,2) 1;size(fg,2) size(fg,1);1 size(fg,1)];
 
 H = homography_solve(OUT',IN');
 

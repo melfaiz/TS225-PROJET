@@ -60,24 +60,24 @@ for i=1:x_max
     end
 end
 
-X = [];
-Y = [];
-
-for i=1:x_max
-    for j=1:y_max
-        
-        a = M(i,j,1) ;    
-        b = M(i,j,2) ;
-        
-        if a>1 && b>1 && b<y2_max && a<x2_max
-            
-            X = [X i];
-            Y = [Y j];
-        
-        end
-        
-    end
-end
+% X = [];
+% Y = [];
+% 
+% for i=1:x_max
+%     for j=1:y_max
+%         
+%         a = M(i,j,1) ;    
+%         b = M(i,j,2) ;
+%         
+%         if a>1 && b>1 && b<y2_max && a<x2_max
+%             
+%             X = [X i];
+%             Y = [Y j];
+%         
+%         end
+%         
+%     end
+% end
 
 
 res = zeros(1,1,3) ;
